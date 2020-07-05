@@ -30,7 +30,7 @@ pipeline {
             sh 'echo hello from stage 2'
         }
 
-        stage('manual aproval) {
+        stage('manual aproval') {
           steps {
             input message: "Move to stage 3?"
         }
