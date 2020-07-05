@@ -4,12 +4,15 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
     }
     agent {
-      node {
-        agent {
-          node {
-            label 'master'
-      }
+        node {
+            agent {
+                node {
+                    label 'master'
+                }
+            }
+        }
     }
+
 
     stages {
 
@@ -26,15 +29,15 @@ pipeline {
         }
 
         stage('stage 2') {
-          steps {
-            sh 'echo hello from stage 2'
+            steps {
+                sh 'echo hello from stage 2'
             }
         }
 
         stage('manual aproval') {
-          steps {
-            input message: "Move to stage 3?"
-          }
+            steps {
+                input message: "Move to stage 3?"
+            }
         }
 
         stage('stage 3') {
@@ -42,6 +45,6 @@ pipeline {
                 sh 'echo hello from stage 3!. This is the last stage...'
             }
         }
-
+    
     }
 }
